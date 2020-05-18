@@ -38,7 +38,7 @@ dependencies {
     compile group: 'javax.persistence', name: 'javax.persistence-api'
 
     compile('org.apache.tomcat.embed:tomcat-embed-core')
-
+    compile('org.springframework.boot:spring-boot-starter-thymeleaf')
     compile('org.springframework.session:spring-session-jdbc')
     testCompile('org.springframework.boot:spring-boot-starter-test')
 

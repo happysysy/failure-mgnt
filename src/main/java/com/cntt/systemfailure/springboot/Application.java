@@ -13,12 +13,14 @@ public class Application {
         SpringApplication.run( Application.class, args );
     }
 
+    /*
     @Bean
     public InternalResourceViewResolver setupViewResolver() {
 
         InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-        resolver.setPrefix( "/WEB-INF/view/" );
+        resolver.setPrefix( "/resources/templates" );
         resolver.setSuffix( ".html" );
         return resolver;
     }
+    */
 }
