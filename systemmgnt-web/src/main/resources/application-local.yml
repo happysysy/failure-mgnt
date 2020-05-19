@@ -1,0 +1,35 @@
+spring:
+  profiles:
+    active: local
+
+  # 개발 - js나 html 수정 시 바로 반영
+  devtools:
+    livereload:
+      enabled: true
+  freemarker:
+    cache: false
+
+  #mysql mode로 변경
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=MYSQL
+
+  #jpa 설정
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+  thymeleaf:
+    prefix: classpath:templates/
+    cache: false
+
+  mvc:
+    static-path-pattern: classpath:js/**
+
+server:
+  port: 8888
+
+
+# logging
+logging:
+  config: classpath:logback-local.xml

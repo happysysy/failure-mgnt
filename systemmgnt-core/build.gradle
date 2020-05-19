@@ -1,0 +1,9 @@
+// bootJar 비활성화시
+// Spring Boot 2.X (Jar 파일로 사용할 경우)
+bootJar.enabled = false
+jar.enabled = true
+/*
+dependencies {
+	implementation 'org.apache.poi:poi-ooxml:4.0.1'
+}
+*/

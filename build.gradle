@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        springBootVersion = '2.1.9.RELEASE'
+        springBootVersion = '2.2.5.RELEASE'
     }
     repositories {
         mavenCentral()
@@ -11,36 +11,72 @@ buildscript {
     }
 }
 
-apply plugin: 'java'
-apply plugin: 'eclipse'
-apply plugin: 'org.springframework.boot'
-apply plugin: 'io.spring.dependency-management'
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'idea'
+    apply plugin: 'eclipse-wtp'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
 
-group 'com.cntt.systemfailure'
-version '1.0.4-SNAPSHOT-'+new Date().format("yyyyMMddHHmmss")
+    group = 'com.cntt.systemfailure'
+    sourceCompatibility='8'
 
-sourceCompatibility = 1.8
+    repositories {
+        mavenCentral()
+    }
 
-repositories {
-    mavenCentral()
-    jcenter()
+    //공통
+    dependencies {
+
+        //  개발일 때 ( 실시간 reload )
+        compile('org.springframework.boot:spring-boot-devtools')
+
+
+        compile('org.springframework.boot:spring-boot-starter-web')
+        compile('org.projectlombok:lombok')
+
+        //compile group: 'org.springframework.data', name: 'spring-data-jpa', version: '1.0.0.RELEASE' 이렇게 써서 안되는거였음...
+        compile group: 'javax.persistence', name: 'javax.persistence-api'
+
+        compile('org.apache.tomcat.embed:tomcat-embed-core')
+        compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+
+        testCompile('org.springframework.boot:spring-boot-starter-test')
+        testCompile group: 'junit', name: 'junit', version: '4.12'
+
+        annotationProcessor('org.projectlombok:lombok')
+
+    }
 }
 
-dependencies {
+project(':systemmgnt-core') {
+    dependencies {
+        // https://mvnrepository.com/artifact/commons-collections/commons-collections
+        compile group: 'commons-collections', name: 'commons-collections', version: '3.2.2'
 
-    compile('org.springframework.boot:spring-boot-starter-web')
-    compile('org.projectlombok:lombok')
-    annotationProcessor('org.projectlombok:lombok')
+    }
+}
 
-    //compile group: 'org.springframework.data', name: 'spring-data-jpa', version: '1.0.0.RELEASE' 이렇게 써서 안되는거였음...
-    compile('org.springframework.boot:spring-boot-starter-data-jpa')
-    compile('com.h2database:h2')
-    compile group: 'javax.persistence', name: 'javax.persistence-api'
+//  DB persistence
+project(':systemmgnt-persistence') {
+    dependencies {
 
-    compile('org.apache.tomcat.embed:tomcat-embed-core')
-    compile('org.springframework.boot:spring-boot-starter-thymeleaf')
-    compile('org.springframework.session:spring-session-jdbc')
-    testCompile('org.springframework.boot:spring-boot-starter-test')
+        compile('org.springframework.boot:spring-boot-starter-data-jpa')
+        compile('com.h2database:h2')
+        compile('org.springframework.session:spring-session-jdbc')
+    }
+}
 
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+project(':systemmgnt-web') {
+    apply plugin: "war"
+    war.archiveName "ROOT.war"
+
+    build.dependsOn ':systemmgnt-core:build'
+
+    dependencies {
+        compile project(':systemmgnt-persistence')
+        compile project(':systemmgnt-core')
+        implementation('org.springframework.boot:spring-boot-starter-tomcat')
+        providedCompile 'javax.servlet:javax.servlet-api:4.0.0'
+    }
 }
