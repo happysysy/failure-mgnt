@@ -1,4 +1,4 @@
-package com.cntt.systemfailure.springboot.domain.posts;
+package com.cntt.systemfailure.domain.posts;
 
 import lombok.Builder;
 import lombok.Getter;

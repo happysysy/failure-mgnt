@@ -1,4 +1,4 @@
-package com.cntt.systemfailure.springboot.web;
+package com.cntt.systemfailure.web;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

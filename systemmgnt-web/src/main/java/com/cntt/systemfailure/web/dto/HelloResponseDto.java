@@ -1,4 +1,4 @@
-package com.cntt.systemfailure.springboot.web.dto;
+package com.cntt.systemfailure.web.dto;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

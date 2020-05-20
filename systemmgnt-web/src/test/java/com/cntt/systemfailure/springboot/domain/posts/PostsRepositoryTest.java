@@ -1,5 +1,7 @@
 package com.cntt.systemfailure.springboot.domain.posts;
 
+import com.cntt.systemfailure.domain.posts.Posts;
+import com.cntt.systemfailure.domain.posts.PostsRepository;
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;

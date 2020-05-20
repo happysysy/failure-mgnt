@@ -1,4 +1,4 @@
-package com.cntt.systemfailure.springboot.domain.posts;
+package com.cntt.systemfailure.domain.posts;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;

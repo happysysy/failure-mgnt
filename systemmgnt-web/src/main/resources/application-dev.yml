@@ -1,7 +1,12 @@
 spring:
-  profiles:
-    active: dev
 
+  # js 절대경로 설정
+  mvc:
+    static-path-pattern: /static/**
+    resources:
+      static-locations: classpath:/static
+
+  #jpa 설정
   jpa:
     show-sql: true
     properties:
@@ -11,5 +16,28 @@ spring:
     prefix: classpath:templates/
     cache: false
 
+  profiles:
+    active: dev
+
+  # 개발 - js나 html 수정 시 바로 반영
+  devtools:
+    livereload:
+      enabled: true
+  freemarker:
+    cache: false
+
+  #mysql mode로 변경
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=MYSQL
+
+  h2:
+    console:
+      enabled: true
+
 server:
-  port: 8889
+  port: 8888
+
+
+# logging
+logging:
+  config: classpath:logback-dev.xml

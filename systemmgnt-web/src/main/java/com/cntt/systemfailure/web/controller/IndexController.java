@@ -1,4 +1,4 @@
-package com.cntt.systemfailure.springboot.web.controller;
+package com.cntt.systemfailure.web.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

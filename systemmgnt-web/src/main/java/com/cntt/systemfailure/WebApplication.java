@@ -1,4 +1,4 @@
-package com.cntt.systemfailure.springboot;
+package com.cntt.systemfailure;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package com.cntt.systemfailure.springboot.web;
+package com.cntt.systemfailure.web;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
