@@ -64,6 +64,7 @@ project(':systemmgnt-persistence') {
         compile('org.springframework.boot:spring-boot-starter-data-jpa')
         compile('com.h2database:h2')
         compile('org.springframework.session:spring-session-jdbc')
+        compile('mysql:mysql-connector-java:8.0.20')
     }
 }
 
@@ -78,5 +79,6 @@ project(':systemmgnt-web') {
         compile project(':systemmgnt-core')
         implementation('org.springframework.boot:spring-boot-starter-tomcat')
         providedCompile 'javax.servlet:javax.servlet-api:4.0.0'
+
     }
 }
