@@ -1,10 +1,8 @@
 spring:
 
-  # js 절대경로 설정
-  mvc:
-    static-path-pattern: /static/**
-    resources:
-      static-locations: classpath:/static
+  #mysql mode로 변경
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=MYSQL
 
   # db관련
   #jpa 설정
@@ -13,8 +11,22 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+        format_sql: true
+
+  # js 절대경로 설정
+  mvc:
+    static-path-pattern: /static/**
+    resources:
+      static-locations: classpath:/static
+
+
+
     database: mysql
     generate-ddl: true
+    hibernate:
+      ddl-auto: create
+
+  # view resolver
   thymeleaf:
     prefix: classpath:templates/
     cache: false
@@ -29,16 +41,12 @@ spring:
   freemarker:
     cache: false
 
-  #mysql mode로 변경
-  datasource:
-    hikari:
-      jdbc-url: jdbc:mysql://119.192.148.204:3306/system_failure_mgnt?useSSL=false&characterEncoding=UTF-8&serverTimezone=UTC
-      username: devcomm
-      password: devcomm1234
-      driver-class-name: com.mysql.jdbc.Driver
-
 
   #    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=MYSQL
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
 #    hikari:
 #      jdbc-url: jdbc:mysql://119.192.148.204:3306/system_failure_mgnt?useSSL=false&characterEncoding=UTF-8&serverTimezone=UTC
 #      username: devcomm

@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
@@ -15,6 +16,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 
 @RunWith(SpringRunner.class)
+@ActiveProfiles( "local" )
 @SpringBootTest
 public class PostsRepositoryTest {
 
@@ -23,7 +25,7 @@ public class PostsRepositoryTest {
 
     @After
     public void cleanup() {
-        postsRepository.deleteAll();
+       // postsRepository.deleteAll();
     }
 
     @Test
