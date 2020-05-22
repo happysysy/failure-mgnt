@@ -1,17 +1,9 @@
 spring:
 
-  #    hikari:
-  #      jdbc-url: jdbc:mysql://119.192.148.204:3306/system_failure_mgnt?useSSL=false&characterEncoding=UTF-8&serverTimezone=UTC
-  #      username: devcomm
-  #      password: devcomm1234
-
-
-  #mysql mode로 변경
-
   ############## DB연결 ( mysql )
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://119.192.148.204:3306/system_failure_mgnt?useSSL=false&characterEncoding=UTF-8&serverTimezone=UTC
+    url: jdbc:mysql://119.192.148.204:3306/system_failure_mgnt?useSSL=false&characterEncoding=utf8&serverTimezone=UTC&useSSL=false&useUnicode=true
     username: devcomm
     password: devcomm1234
 
@@ -21,14 +13,13 @@ spring:
     #url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=MYSQL
 
   # db관련
+  #mysql mode로 변경
   #jpa 설정
   jpa:
-    show-sql: true
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
-        format_sql: true
     database: mysql
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    generate-ddl: true
+    show-sql: true
 
   # js 절대경로 설정
   mvc:
@@ -65,6 +56,11 @@ spring:
     console:
       enabled: true
       path: /h2-console
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
 
 
 

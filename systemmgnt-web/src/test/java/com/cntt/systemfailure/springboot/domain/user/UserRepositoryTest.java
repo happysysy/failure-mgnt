@@ -1,7 +1,9 @@
-package com.cntt.systemfailure.springboot.domain.posts;
+package com.cntt.systemfailure.springboot.domain.user;
 
 import com.cntt.systemfailure.domain.posts.Posts;
 import com.cntt.systemfailure.domain.posts.PostsRepository;
+import com.cntt.systemfailure.domain.user.User;
+import com.cntt.systemfailure.domain.user.UserRepository;
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,10 +20,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 @RunWith(SpringRunner.class)
 @ActiveProfiles( "local" )
 @SpringBootTest
-public class PostsRepositoryTest {
+public class UserRepositoryTest {
 
     @Autowired
-    PostsRepository postsRepository;
+    UserRepository userRepository;
 
     @After
     public void cleanup() {
@@ -34,17 +36,17 @@ public class PostsRepositoryTest {
         String title = "테스트 게시글";
         String content = "테스트 본문";
 
-        postsRepository.save( Posts.builder()
+        userRepository.save( User.builder()
                 .title( title )
                 .content( content )
                 .author( "lowell@cntt.co.kr" )
                 .build() );
 
-        List<Posts> postsList = postsRepository.findAll();
+        List<User> userList = userRepository.findAll();
 
-        Posts posts = postsList.get( 0 );
-        assertThat( posts.getTitle()).isEqualTo( title );
-        assertThat( posts.getContent()).isEqualTo( content );
+        User user = userList.get( 0 );
+        assertThat( user.getTitle()).isEqualTo( title );
+        assertThat( user.getContent()).isEqualTo( content );
 
     }
 }
