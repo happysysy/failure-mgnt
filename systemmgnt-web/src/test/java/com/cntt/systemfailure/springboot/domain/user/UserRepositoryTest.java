@@ -33,20 +33,17 @@ public class UserRepositoryTest {
     @Test
     public void 게시글저장_불러오기 () {
 
-        String title = "테스트 게시글";
-        String content = "테스트 본문";
+
+        String name = "lowell";
 
         userRepository.save( User.builder()
-                .title( title )
-                .content( content )
-                .author( "lowell@cntt.co.kr" )
+                .name( name)
                 .build() );
 
         List<User> userList = userRepository.findAll();
 
         User user = userList.get( 0 );
-        assertThat( user.getTitle()).isEqualTo( title );
-        assertThat( user.getContent()).isEqualTo( content );
+        assertThat( user.getName()).isEqualTo( name );
 
     }
 }

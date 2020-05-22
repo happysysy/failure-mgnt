@@ -16,18 +16,18 @@ public class User {
     private Long id ;
 
     @Column( length = 500, nullable = false)
-    private String title;
+    private String name;
 
-    @Column( columnDefinition = "TEXT", nullable = false)
-    private String content;
+    @Column( length = 500, nullable = true )
+    private String position;
 
-    private String author;
+    @Column( length = 500, nullable = true )
+    private String deptNm;
 
     @Builder
-    public User(String title, String content, String author) {
-        this.title = title;
-        this.content = content;
-        this.author = author;
+    public User( Long id, String name ) {
+        this.id = id;
+        this.name = name;
     }
 
 }
