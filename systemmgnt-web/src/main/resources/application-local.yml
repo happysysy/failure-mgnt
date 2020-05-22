@@ -1,5 +1,8 @@
 spring:
 
+  profiles:
+    active: local
+
   ############## DB연결 ( mysql )
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -12,22 +15,20 @@ spring:
     ############## 테스트용 데이터설정 H2 데이터베이스
     #url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=MYSQL
 
-  # db관련
-  #mysql mode로 변경
   #jpa 설정
   jpa:
     database: mysql
-    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     generate-ddl: true
     show-sql: true
+
+    #mysql mode로 변경
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
 
   # js 절대경로 설정
   mvc:
     static-path-pattern: /static/**
     resources:
       static-locations: classpath:/static
-
-
 
     database: mysql
     generate-ddl: true
@@ -39,9 +40,6 @@ spring:
   thymeleaf:
     prefix: classpath:templates/
     cache: false
-
-  profiles:
-    active: local
 
   # 개발 - js나 html 수정 시 바로 반영
   devtools:

@@ -34,7 +34,7 @@ public class UserRepositoryTest {
     public void 게시글저장_불러오기 () {
 
 
-        String name = "lowell";
+        String name = "merlin";
 
         userRepository.save( User.builder()
                 .name( name)
@@ -42,7 +42,7 @@ public class UserRepositoryTest {
 
         List<User> userList = userRepository.findAll();
 
-        User user = userList.get( 0 );
+        User user = userList.get( userList.size() - 1 );
         assertThat( user.getName()).isEqualTo( name );
 
     }
